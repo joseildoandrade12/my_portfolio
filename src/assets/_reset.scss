@@ -1,6 +1,10 @@
 *,
 *::before,
 *::after {
+  list-style: none;
+  text-decoration: none;
+  outline: none;
+  font-style: none;
   box-sizing: border-box;
   margin: 0;
   font-weight: normal;

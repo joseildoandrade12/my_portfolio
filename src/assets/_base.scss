@@ -1,0 +1,14 @@
+@use 'variables' as *;
+
+html {
+  background-color: $bg-principal;
+  font-family: $font-family;
+  font-weight: normal;
+  color: $color-title;
+}
+
+#app {
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
