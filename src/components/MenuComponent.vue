@@ -25,7 +25,7 @@
       </RouterLink>
     </li>
     <li>
-      <a target="blank" href="">
+      <a target="blank" href="https://github.com/joseildoandrade12">
         <p>GitHub</p>
         <ShareIcon fill="#63B3FF" />
       </a>
