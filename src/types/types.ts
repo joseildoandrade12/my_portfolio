@@ -7,6 +7,8 @@ export interface PropsIcon {
 export interface DataGithub {
   login: string;
   avatar_url: string;
+  bio: string | null;
+  html_url: string;
 }
 
 export interface DataRepository {
