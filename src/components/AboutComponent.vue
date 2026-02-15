@@ -26,7 +26,9 @@
     </p>
     <a :href="repository?.html_url" target="_blank">
       <div class="loading" v-if="loadingProfile || loadingRepository"></div>
-      <div class="card-informations-github" v-if="!loadingProfile && !loadingRepository">
+      <div
+        class="card-informations-github"
+        v-if="!loadingProfile && !loadingRepository">
         <div class="header-card">
           <div class="picture-profile">
             <img :src="profile?.avatar_url" alt="Profile Picture" />
@@ -127,6 +129,9 @@
         font-size: $font-base-sm;
         color: $color-description;
         margin-bottom: 0.75rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .footer-card {
