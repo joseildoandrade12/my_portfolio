@@ -5,15 +5,23 @@
 </script>
 
 <template>
-  <div class="container-image"><img src="../public/sl_031420_28950_10.jpg" alt=""></div>
-  <HeaderComponent class="menu"/>
+  <div class="container-image">
+    <img src="../public/sl_031420_28950_10.jpg" alt="" />
+  </div>
+  <HeaderComponent class="menu" />
   <main>
     <RouterView />
   </main>
   <ProfileLayout />
+  <footer>
+    <div class="spacing"></div>
+    <p>©Todos os direitos reservados</p>
+  </footer>
 </template>
 
 <style scoped lang="scss">
+  $color-line: $btn-regular;
+
   .container-image {
     width: 100vw;
     height: 320px;
@@ -36,5 +44,22 @@
     border-radius: 0.75rem;
     background-color: $bg-sections;
     margin-bottom: 24px;
+  }
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 60px;
+
+    .spacing {
+      width: 100%;
+      border: 1px dashed $color-line;
+      margin-bottom: 60px;
+    }
+
+    p {
+      color: $color-description;
+      margin-top: 0.75rem;
+    }
   }
 </style>
