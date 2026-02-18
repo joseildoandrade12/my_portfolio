@@ -3,6 +3,10 @@
   import { useGithubProfile } from '@/composables/useGithubProfile';
   import { useRepositoryService } from '@/composables/useRepositoryService';
 
+  import StarIcon from './icons/StarIcon.vue';
+  import ForkIcon from './icons/ForkIcon.vue';
+  import BalanceIcon from './icons/BalanceIcon.vue';
+
   const { profile, errorProfile, loadingProfile, fetchProfile } =
     useGithubProfile();
 
@@ -38,9 +42,9 @@
         </div>
         <p>{{ repository?.description }}</p>
         <div class="footer-card">
-          <div class="stars">{{ repository?.stargazers_count }}</div>
-          <div class="forks">{{ repository?.forks_count }}</div>
-          <div class="license">{{ repository?.license }}</div>
+          <div class="stars" > <StarIcon fill="#ffffffb3" width="24px" height="24px"/> {{ repository?.stargazers_count }}</div>
+          <div class="forks"> <ForkIcon fill="#ffffffb3" width="20px" height="24px"/> {{ repository?.forks_count }}</div>
+          <div class="license"> <BalanceIcon fill="#ffffffb3" width="24px" height="24px"/> {{ repository?.license?.name }}</div>
         </div>
       </div>
     </a>
@@ -135,6 +139,12 @@
       }
 
       .footer-card {
+        & > div {
+          display: flex;
+          align-items: center;
+          gap: 0.25rem;
+          text-align: center;
+        }
         color: $color-description;
         display: flex;
         gap: 1rem;

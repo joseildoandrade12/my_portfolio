@@ -15,7 +15,7 @@ export interface DataRepository {
   name: string;
   html_url: string;
   description: string;
-  license: string | null;
+  license: { name: string } | null;
   forks_count: number;
   stargazers_count: number;
 }
