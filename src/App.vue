@@ -9,10 +9,10 @@
     <img src="../public/sl_031420_28950_10.jpg" alt="" />
   </div>
   <HeaderComponent class="menu" />
+  <ProfileLayout />
   <main>
     <RouterView />
   </main>
-  <ProfileLayout />
   <footer>
     <div class="spacing"></div>
     <p>©Todos os direitos reservados</p>
@@ -23,7 +23,7 @@
   $color-line: $btn-regular;
 
   .container-image {
-    width: 100vw;
+    width: 100%;
     height: 320px;
     z-index: -999;
     position: absolute;
@@ -36,15 +36,18 @@
       object-fit: cover;
     }
   }
+
   .menu {
     margin-bottom: 180px;
   }
+
   main {
     padding: 1.5rem;
     border-radius: 0.75rem;
     background-color: $bg-sections;
     margin-bottom: 24px;
   }
+  
   footer {
     display: flex;
     flex-direction: column;
