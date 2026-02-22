@@ -71,6 +71,7 @@
     padding: 1.25rem;
     background-color: $bg-sections;
     border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
 
     .image-profile {
       width: 160px;
