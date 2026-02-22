@@ -19,3 +19,11 @@ export interface DataRepository {
   forks_count: number;
   stargazers_count: number;
 }
+
+export interface DataPost {
+  id: number | string;
+  title: string;
+  body: string;
+  date: string;
+  category: string;
+}
