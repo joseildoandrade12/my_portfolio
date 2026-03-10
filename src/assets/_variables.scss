@@ -1,16 +1,49 @@
-$primary-color: #63B3FF;
-$background-elements: #7CB3EB;
+:root {
+  &.light {
+    --primary-color: #53a3f2;
+    --background-elements: #7cb3eb;
 
-$btn-regular: #283747;
-$btn-regular-hover:#324457;
-$btn-secondary-hover: #202f3f;
-$btn-active-hover: #3D5268;
+    --bg-principal: #eaeff5;
+    --bg-sections: #fff;
 
-$bg-principal: #090E13;
-$bg-sections: #181E24;
-$color-title: rgba(255, 255, 255, 0.902);
-$color-description: rgba(255, 255, 255, 0.702);
-$color-tags: rgba(255, 255, 255, 0.502);
+    --color-title: #090e13;
+    --color-description: #181e24;
+    --color-tags: #00000080;
+
+    --btn-regular: #e2f0ff;
+    --btn-regular-hover: #c6e1ff;
+    --btn-secondary-hover: #e2f0ff ;
+    --btn-active-hover: #3d5268;
+  }
+  &.dark {
+    --primary-color: #63b3ff;
+    --background-elements: #7cb3eb;
+
+    --bg-principal: #090e13;
+    --bg-sections: #181e24;
+
+    --color-title: #ffffffe6;
+    --color-description: #ffffffb3;
+    --color-tags: #ffffff80;
+    
+    --btn-regular: #283747;
+    --btn-regular-hover: #324457;
+    --btn-secondary-hover: #202f3f;
+    --btn-active-hover: #3d5268;
+  }
+}
+
+$bg-principal: var(--bg-principal);
+$bg-sections: var(--bg-sections);
+$color-title: var(--color-title);
+$color-description: var(--color-description);
+$color-tags: var(--color-tags);
+$btn-regular: var(--btn-regular);
+$btn-regular-hover: var(--btn-regular-hover);
+$btn-secondary-hover: var(--btn-secondary-hover);
+$btn-active-hover: var(--btn-active-hover);
+$primary-color: var(--primary-color);
+$background-elements: var(--background-elements);
 
 $font-family: 'Roboto', sans-serif;
 $font-base-xs: 0.75rem;
