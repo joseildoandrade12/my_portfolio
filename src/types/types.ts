@@ -1,5 +1,5 @@
 export interface PropsIcon {
-  fill: string;
+  fill?: string;
   width?: string;
   height?: string;
 }
