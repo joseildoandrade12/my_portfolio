@@ -15,3 +15,13 @@
       :fill="props.fill" />
   </svg>
 </template>
+
+<style scoped lang="scss">
+  .dark svg {
+    fill: #ffffffb3;
+  }
+  .light svg {
+    fill: #3275b4;
+  }
+</style>
+

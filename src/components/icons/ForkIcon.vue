@@ -36,3 +36,12 @@
       stroke-linejoin="round" />
   </svg>
 </template>
+
+<style scoped lang="scss">
+  .dark svg {
+    fill: #ffffffb3;
+  }
+  .light svg {
+    fill: #181e24;
+  }
+</style>

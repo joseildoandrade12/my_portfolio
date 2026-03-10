@@ -23,3 +23,13 @@
       stroke-width="2" />
   </svg>
 </template>
+
+<style scoped lang="scss">
+  .dark svg {
+    stroke: #ffffffb3;
+  }
+  .light svg {
+    stroke: #3275b4;
+  }
+</style>
+

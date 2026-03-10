@@ -19,3 +19,12 @@
       />
   </svg>
 </template>
+
+<style scoped lang="scss">
+  .dark svg {
+    stroke: #63B3FF;
+  }
+  .light svg {
+    stroke: #3275b4;
+  }
+</style>
