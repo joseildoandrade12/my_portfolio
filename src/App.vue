@@ -2,6 +2,16 @@
   import { RouterView } from 'vue-router';
   import HeaderComponent from './components/HeaderComponent.vue';
   import ProfileLayout from './components/ProfileLayout.vue';
+  import { useThemePage } from './composables/useThemePage';
+
+  const { toggleTheme } = useThemePage();
+  const theme = localStorage.getItem('theme') as 'dark' | 'light' | 'system' | null;
+  
+  if (theme) {
+    toggleTheme(theme);
+  } else {
+    toggleTheme('system');
+  }
 </script>
 
 <template>
@@ -47,7 +57,7 @@
     background-color: $bg-sections;
     margin-bottom: 24px;
   }
-  
+
   footer {
     display: flex;
     flex-direction: column;
