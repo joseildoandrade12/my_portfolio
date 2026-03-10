@@ -42,9 +42,9 @@
         </div>
         <p>{{ repository?.description }}</p>
         <div class="footer-card">
-          <div class="stars" > <StarIcon fill="#ffffffb3" width="24px" height="24px"/> {{ repository?.stargazers_count }}</div>
-          <div class="forks"> <ForkIcon fill="#ffffffb3" width="20px" height="24px"/> {{ repository?.forks_count }}</div>
-          <div class="license"> <BalanceIcon fill="#ffffffb3" width="24px" height="24px"/> {{ repository?.license?.name }}</div>
+          <div class="stars" > <StarIcon width="24px" height="24px"/> {{ repository?.stargazers_count }}</div>
+          <div class="forks"> <ForkIcon width="20px" height="24px"/> {{ repository?.forks_count }}</div>
+          <div class="license"> <BalanceIcon width="24px" height="24px"/> {{ repository?.license?.name }}</div>
         </div>
       </div>
     </a>
