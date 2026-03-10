@@ -25,18 +25,18 @@
       {{ profile?.bio }}
     </p>
     <div class="container-icons-profile">
-      <a href="https://www.instagram.com/juniorandrade12_/" target="_blank"
-        ><InstagramIcon width="28" height="28" :fill="'#ffffffe6'"
-      /></a>
-      <a href="mailto:joseildoandrade1405@gmail.com" target="_blank"
-        ><EmailIcon width="28" height="28" :fill="'#ffffffe6'"
-      /></a>
-      <a href="https://www.linkedin.com/in/joseildo-andrade/" target="_blank"
-        ><LinkedinIcon width="28" height="28" :fill="'#ffffffe6'"
-      /></a>
-      <a :href="profile?.html_url" target="_blank"
-        ><GithubIcon width="28" height="28" :fill="'#ffffffe6'"
-      /></a>
+      <a href="https://www.instagram.com/juniorandrade12_/" target="_blank">
+        <InstagramIcon width="28" height="28" />
+      </a>
+      <a href="mailto:joseildoandrade1405@gmail.com" target="_blank">
+        <EmailIcon width="28" height="28" />
+      </a>
+      <a href="https://www.linkedin.com/in/joseildo-andrade/" target="_blank">
+        <LinkedinIcon width="28" height="28" />
+      </a>
+      <a :href="profile?.html_url" target="_blank">
+        <GithubIcon width="28" height="28" />
+      </a>
     </div>
   </div>
 </template>
