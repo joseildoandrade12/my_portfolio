@@ -14,6 +14,14 @@
     arraySeparatingPosts.value = [];
 
     for (let i = 0; i < arr.length; i += 3) {
+      if (arr.slice(i, i + 3).length == 1) {
+        arraySeparatingPosts.value.push(arr.slice(i - 2, i + 3));
+        return;
+      }
+      if (arr.slice(i, i + 3).length == 2) {
+        arraySeparatingPosts.value.push(arr.slice(i - 1, i + 3));
+        return;
+      }
       arraySeparatingPosts.value.push(arr.slice(i, i + 3));
     }
   }
