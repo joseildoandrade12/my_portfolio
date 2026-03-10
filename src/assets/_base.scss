@@ -1,5 +1,9 @@
 @use 'variables' as *;
 
+* {
+  transition: background-color 0.3s, color 0.3s;
+}
+
 html {
   background-color: $bg-principal;
   font-family: $font-family;
