@@ -17,13 +17,13 @@
       <div class="informations-post">
         <div class="date">
           <div class="icon date">
-            <CalendarIcon fill="#63B3FF" width="16px" height="16px" />
+            <CalendarIcon width="16px" height="16px" />
           </div>
           {{ props.post.date }}
         </div>
         <div class="category">
           <div class="icon category">
-            <BookIcon fill="#63B3FF" width="16px" height="16px" />
+            <BookIcon width="16px" height="16px" />
           </div>
           {{ props.post.category }}
         </div>
