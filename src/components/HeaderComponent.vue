@@ -1,12 +1,41 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { onMounted, ref, type Component } from 'vue';
   import { RouterLink } from 'vue-router';
+  import { useThemePage } from '@/composables/useThemePage';
   import HomeIcon from './icons/HomeIcon.vue';
   import MenuIcon from './icons/MenuIcon.vue';
-  import ThemePage from './icons/MoonIcon.vue';
+  import Moon from './icons/MoonIcon.vue';
+  import Sun from './icons/SunIcon.vue';
+  import Contrast from './icons/ContrastIcon.vue';
   import MenuComponent from './MenuComponent.vue';
 
+  interface ObjTheme {
+    icon: Component;
+    theme: 'dark' | 'light' | 'system';
+  }
+
+  const { toggleTheme, theme } = useThemePage();
+  const count = ref(0);
   const activeMenu = ref(false);
+
+  const themes: ObjTheme[] = [
+    { icon: Moon, theme: 'dark' },
+    { icon: Sun, theme: 'light' },
+    { icon: Contrast, theme: 'system' },
+  ];
+
+  function sumCount() {
+    count.value = (count.value + 1) % themes.length;
+    const themeObj = themes[count.value];
+    if (!themeObj) return;
+    toggleTheme(themeObj.theme);
+  }
+
+  for (let i = 0; i < themes.length; i++) {
+    if (theme === themes[i]?.theme) {
+      count.value = i;
+    }
+  }
 </script>
 
 <template>
@@ -15,13 +44,14 @@
       <HomeIcon class="home-icon" fill="#63B3FF" />
       <h1>JoseildoDev</h1>
     </RouterLink>
-    <MenuComponent class="itens-menu " v-if="activeMenu"/>
+    <MenuComponent class="itens-menu" v-if="activeMenu" />
     <nav>
-      <button>
-        <ThemePage fill="#ffffffb3" width="20px" height="20px" />
+      <button @click="sumCount">
+        <component :is="themes[count]?.icon" width="20px" height="20px">
+        </component>
       </button>
       <button @click="activeMenu = !activeMenu">
-        <MenuIcon fill="#ffffffb3" width="20px" height="20px" />
+        <MenuIcon width="20px" height="20px" />
       </button>
     </nav>
   </div>
