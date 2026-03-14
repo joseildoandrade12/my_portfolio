@@ -27,6 +27,7 @@ const router = createRouter({
       name: 'post',
       component: () => import('../views/PostView.vue'),
       alias: '/projetos/post/:id',
+      props: true
     },
     {
       path: '/404',

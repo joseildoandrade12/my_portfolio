@@ -2,49 +2,49 @@
   {
     "id": 1,
     "title": "Introdução ao Vue 2",
-    "body": "Neste post aprendemos os conceitos básicos do Vue 2, como instância, diretivas e interpolação.",
+    "body": "# Introdução ao Vue 2\n\nO Vue 2 é um framework progressivo para construir interfaces de usuário.\n\n## Principais conceitos:\n- **Instância Vue**: O ponto de entrada da sua aplicação.\n- **Diretivas**: Comandos especiais como `v-if` e `v-for`.\n- **Interpolação**: Uso de chaves duplas `{{ }}` para exibir dados reativos.\n\n> \"O Vue é fácil de aprender e muito poderoso para SPAs.\"",
     "date": "2026-02-10",
     "category": "Vue"
   },
   {
     "id": 2,
     "title": "Componentes no Vue",
-    "body": "Os componentes permitem reutilizar código e organizar melhor a aplicação.",
+    "body": "# Componentes: A base do Vue\n\nComponentes são instâncias Vue reutilizáveis. Eles permitem dividir a UI em partes independentes.\n\n### Vantagens:\n1. **Reutilização**: Escreva uma vez, use várias vezes.\n2. **Manutenibilidade**: Código organizado em arquivos `.vue`.\n3. **Encapsulamento**: Estilos e lógica isolados.\n\n```vue\n<template>\n  <button>Clique aqui</button>\n</template>\n```",
     "date": "2026-02-11",
     "category": "Vue"
   },
   {
     "id": 3,
     "title": "Props e Eventos",
-    "body": "Aprenda como passar dados entre componentes usando props e emitir eventos personalizados.",
+    "body": "# Comunicação entre Componentes\n\nPara que componentes conversem entre si, usamos:\n\n* **Props**: Dados descendo do pai para o filho.\n* **Eventos (`$emit`)**: Avisos subindo do filho para o pai.\n\n### Exemplo de Prop\n`props: ['title']`",
     "date": "2026-02-12",
     "category": "Vue"
   },
   {
     "id": 4,
     "title": "Diretivas Essenciais",
-    "body": "Veja como utilizar v-if, v-for e v-model para criar aplicações dinâmicas.",
+    "body": "# Dominando as Diretivas\n\nAs diretivas são atributos especiais prefixados com `v-`.\n\n| Diretiva | Descrição |\n| :--- | :--- |\n| `v-if` | Renderização condicional |\n| `v-for` | Listagem de itens |\n| `v-model` | Bind bidirecional de formulários |",
     "date": "2026-02-13",
     "category": "Vue"
   },
   {
     "id": 5,
     "title": "Introdução ao TypeScript",
-    "body": "Entenda como o TypeScript adiciona tipagem estática ao JavaScript.",
+    "body": "# Por que usar TypeScript?\n\nO TypeScript é um superconjunto do JavaScript que adiciona tipagem estática. Isso ajuda a capturar erros em tempo de compilação em vez de tempo de execução.\n\n## Benefícios:\n- **IntelliSense** melhorado no VS Code.\n- Código mais autodocumentado.\n- Facilita refatorações em grandes projetos.",
     "date": "2026-02-14",
     "category": "TypeScript"
   },
   {
     "id": 6,
     "title": "Interfaces no TypeScript",
-    "body": "As interfaces ajudam a definir contratos de objetos e melhorar a organização do código.",
+    "body": "# Interfaces: Definindo Contratos\n\nInterfaces definem a \"forma\" que um objeto deve ter.\n\n```typescript\ninterface Post {\n  id: number;\n  title: string;\n  body: string;\n}\n```\nIsso garante que todos os seus posts tenham as propriedades obrigatórias.",
     "date": "2026-02-15",
     "category": "TypeScript"
   },
   {
     "id": 7,
     "title": "Consumindo API com Fetch",
-    "body": "Aprenda a fazer requisições HTTP utilizando a API Fetch do JavaScript.",
+    "body": "# Requisições HTTP com Fetch\n\nO `fetch` é a API nativa do navegador para realizar chamadas assíncronas.\n\n### Exemplo prático:\n```javascript\nasync function getPosts() {\n  const response = await fetch('[https://api.exemplo.com/posts](https://api.exemplo.com/posts)');\n  return await response.json();\n}\n```\n",
     "date": "2026-02-16",
     "category": "JavaScript"
   }
