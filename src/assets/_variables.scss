@@ -12,7 +12,7 @@
 
     --btn-regular: #e2f0ff;
     --btn-regular-hover: #c6e1ff;
-    --btn-secondary-hover: #e2f0ff ;
+    --btn-secondary-hover: #e2f0ff;
     --btn-active-hover: #3d5268;
   }
   &.dark {
@@ -25,7 +25,7 @@
     --color-title: #ffffffe6;
     --color-description: #ffffffb3;
     --color-tags: #ffffff80;
-    
+
     --btn-regular: #283747;
     --btn-regular-hover: #324457;
     --btn-secondary-hover: #202f3f;
@@ -54,3 +54,9 @@ $font-base-xl: 1.25rem;
 $font-base-2xl: 1.5rem;
 $font-base-3xl: 1.875rem;
 $font-base-4xl: 2.25rem;
+
+%standard-section {
+  background-color: $bg-sections;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+}
