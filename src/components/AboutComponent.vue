@@ -56,6 +56,8 @@
   $color-p-hover: $background-elements;
 
   .container-sobre {
+    @extend %standard-section;
+
     h1 {
       color: $color-title;
       font: $font-base-3xl;

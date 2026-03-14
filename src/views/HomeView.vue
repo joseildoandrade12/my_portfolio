@@ -52,15 +52,15 @@
       :key="post.id"
       class="post-item"
       :post="post" />
-    <div class="container-navegation">
-      <button @click="subtractCountSectionPost">
-        <ArrowIcon fill="#181E24" />
-      </button>
-      <p>{{ countSectionPost + 1 }}</p>
-      <button @click="sumCountSectionPost">
-        <ArrowIcon fill="#181E24" />
-      </button>
-    </div>
+  </div>
+  <div class="container-navegation">
+    <button @click="subtractCountSectionPost">
+      <ArrowIcon fill="#090e13" />
+    </button>
+    <p>{{ countSectionPost + 1 }}</p>
+    <button @click="sumCountSectionPost">
+      <ArrowIcon fill="#090e13" />
+    </button>
   </div>
 </template>
 
@@ -68,6 +68,7 @@
   $color-line: $btn-regular;
   .container-home {
     min-height: 490px;
+    @extend %standard-section;
 
     .post-item {
       margin-bottom: 1rem;
@@ -75,46 +76,46 @@
       border-bottom: 1px dashed $color-line;
       cursor: pointer;
     }
+  }
+  .container-navegation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 20px;
 
-    .container-navegation {
+    button {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1.5rem;
+      width: 50px;
+      height: 50px;
+      border: none;
+      border-radius: 0.375rem;
+      background-color: $bg-sections;
+      cursor: pointer;
+      transition: 200ms ease-in-out;
 
-      button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        border: none;
-        border-radius: 0.375rem;
-        background-color: $bg-principal;
-        cursor: pointer;
-        transition: 200ms ease-in-out;
-
-        &:hover {
-          background-color: $primary-color;
-        }
-      }
-
-      p {
-        color: $bg-sections;
-        font-weight: bold;
-        width: 36px;
-        height: 36px;
+      &:hover {
         background-color: $primary-color;
-        border-radius: 0.375rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
+    }
 
-      &:last-child {
-        button:last-child {
-          transform: rotate(180deg);
-        }
+    p {
+      color: $bg-sections;
+      font-weight: bold;
+      width: 50px;
+      height: 50px;
+      background-color: $primary-color;
+      border-radius: 0.375rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &:last-child {
+      button:last-child {
+        transform: rotate(180deg);
       }
     }
   }

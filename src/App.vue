@@ -52,9 +52,6 @@
   }
 
   main {
-    padding: 1.5rem;
-    border-radius: 0.75rem;
-    background-color: $bg-sections;
     margin-bottom: 24px;
   }
 
