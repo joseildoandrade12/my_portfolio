@@ -5,7 +5,7 @@
   import { Marked } from 'marked';
   import { markedHighlight } from 'marked-highlight';
   import hljs from 'highlight.js';
-  import 'highlight.js/styles/github-dark.css';
+  import 'highlight.js/styles/base16/framer.css';
 
   import CalendarIcon from '@/components/icons/CalendarIcon.vue';
   import HashtagIcon from '@/components/icons/HashtagIcon.vue';
