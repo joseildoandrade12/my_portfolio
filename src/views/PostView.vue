@@ -1,13 +1,27 @@
 <script setup lang="ts">
-  import { computed, onMounted, nextTick } from 'vue';
+  import { computed } from 'vue';
   import { useDataPost } from '@/composables/useDataPost';
   import type { DataPost } from '@/types/types';
-  import { marked } from 'marked';
+  import { Marked } from 'marked';
+  import { markedHighlight } from 'marked-highlight';
+  import hljs from 'highlight.js';
+  import 'highlight.js/styles/github-dark.css';
 
   import CalendarIcon from '@/components/icons/CalendarIcon.vue';
   import HashtagIcon from '@/components/icons/HashtagIcon.vue';
   import ArrowIcon from '@/components/icons/ArrowIcon.vue';
   import router from '@/router';
+
+  const marked = new Marked(
+    markedHighlight({
+      emptyLangClass: 'hljs',
+      langPrefix: 'hljs language-',
+      highlight(code, lang, info) {
+        const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+        return hljs.highlight(code, { language }).value;
+      },
+    })
+  );
 
   const { dataPost } = useDataPost();
   const props = defineProps(['id']);
