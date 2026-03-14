@@ -1,1 +1,173 @@
-<template></template>
+<script setup lang="ts">
+  import { computed, onMounted, nextTick } from 'vue';
+  import { useDataPost } from '@/composables/useDataPost';
+  import type { DataPost } from '@/types/types';
+  import { marked } from 'marked';
+
+  import CalendarIcon from '@/components/icons/CalendarIcon.vue';
+  import HashtagIcon from '@/components/icons/HashtagIcon.vue';
+  import ArrowIcon from '@/components/icons/ArrowIcon.vue';
+  import router from '@/router';
+
+  const { dataPost } = useDataPost();
+  const props = defineProps(['id']);
+  const nxPost = computed(() => !(props.id < dataPost.value.length));
+  const pvPost = computed(() => !(props.id > 1));
+
+  const contentPost = computed(() => {
+    return dataPost.value[props.id - 1] as DataPost;
+  });
+
+  const html = computed(() => {
+    return contentPost.value
+      ? (marked.parse(contentPost.value.body) as string)
+      : '';
+  });
+
+  function nextPost() {
+    if (props.id == dataPost.value.length) {
+      return;
+    }
+    router.push(`/projects/post/${+props.id + 1}`);
+  }
+
+  function previousPost() {
+    if (props.id == 1) {
+      return;
+    }
+    router.push(`/projects/post/${+props.id - 1}`);
+  }
+</script>
+
+<template>
+  <div class="container-content" v-if="contentPost">
+    <h1>{{ contentPost?.title }}</h1>
+    <div class="container-tags">
+      <div class="container-icons">
+        <div class="icon calendar">
+          <CalendarIcon height="16px" width="16px" />
+        </div>
+        <p>{{ contentPost?.date }}</p>
+      </div>
+      <div class="container-icons">
+        <div class="icon calendar">
+          <HashtagIcon height="16px" width="16px" />
+        </div>
+        <p>{{ contentPost?.category }}</p>
+      </div>
+    </div>
+    <div class="spacing"></div>
+    <div class="content" v-html="html"></div>
+  </div>
+
+  <div class="container-buttons-footer">
+    <button class="previous" @click="previousPost" :disabled="pvPost">
+      <ArrowIcon />
+      Postagem anterior
+    </button>
+
+    <button class="next" @click="nextPost" :disabled="nxPost">
+      Próxima postagem
+      <ArrowIcon />
+    </button>
+  </div>
+</template>
+
+<style scoped lang="scss">
+  $color-line: $btn-regular;
+  $background-icon: $btn-regular;
+
+  .container-content {
+    @extend %standard-section;
+
+    h1 {
+      font-size: $font-base-3xl;
+      font-weight: bold;
+      margin-bottom: 1rem;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 4px;
+        border-radius: 0.375rem;
+        margin-right: 0.5rem;
+        margin-left: -0.5rem;
+        height: 24px;
+        background-color: $primary-color;
+      }
+    }
+
+    .container-tags {
+      display: flex;
+      margin-bottom: 1rem;
+
+      & .container-icons {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-right: 1rem;
+
+        & .icon {
+          width: 24px;
+          height: 24px;
+          background-color: $background-icon;
+          border-radius: 0.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+
+    .spacing {
+      width: 100%;
+      border: 1px dashed $color-line;
+      margin-bottom: 24px;
+    }
+  }
+
+  .container-buttons-footer {
+    background-color: $bg-principal;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 32px;
+    gap: 20px;
+
+    button {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      cursor: pointer;
+      font-size: $font-base-lg;
+      font-weight: bold;
+      color: $color-description;
+      background-color: $bg-sections;
+      border: none;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+
+      svg {
+        margin: 0 1rem;
+      }
+      &:hover {
+        background-color: $btn-secondary-hover;
+      }
+    }
+
+    & button:last-child {
+      justify-content: end;
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    .previous {
+      text-align: start;
+    }
+
+    .next {
+      text-align: end;
+    }
+  }
+</style>
