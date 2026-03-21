@@ -5,8 +5,12 @@
   import { useThemePage } from './composables/useThemePage';
 
   const { toggleTheme } = useThemePage();
-  const theme = localStorage.getItem('theme') as 'dark' | 'light' | 'system' | null;
-  
+  const theme = localStorage.getItem('theme') as
+    | 'dark'
+    | 'light'
+    | 'system'
+    | null;
+
   if (theme) {
     toggleTheme(theme);
   } else {
@@ -19,10 +23,12 @@
     <img src="../public/sl_031420_28950_10.jpg" alt="" />
   </div>
   <HeaderComponent class="menu" />
-  <ProfileLayout />
-  <main>
-    <RouterView />
-  </main>
+  <div class="container-main">
+    <ProfileLayout />
+    <main>
+      <RouterView />
+    </main>
+  </div>
   <footer>
     <div class="spacing"></div>
     <p>©Todos os direitos reservados</p>
@@ -31,6 +37,15 @@
 
 <style scoped lang="scss">
   $color-line: $btn-regular;
+
+  @include media('desktop') {
+    .container-main {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      grid-template-rows: auto;
+      gap: 1rem;
+    }
+  }
 
   .container-image {
     width: 100%;
@@ -51,8 +66,10 @@
     margin-bottom: 180px;
   }
 
-  main {
-    margin-bottom: 24px;
+  .container-main {
+    main {
+      margin-bottom: 24px;
+    }
   }
 
   footer {
