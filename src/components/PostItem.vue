@@ -1,10 +1,15 @@
 <script setup lang="ts">
+  import { computed } from 'vue';
   import { RouterLink } from 'vue-router';
   import type { DataPost } from '@/types/types';
+  import { useWindowSize } from '@/composables/useWindowSize';
   import ArrowIcon from './icons/ArrowIcon.vue';
   import CalendarIcon from './icons/CalendarIcon.vue';
   import BookIcon from './icons/BookIcon.vue';
   const props = defineProps<{ post: DataPost }>();
+
+  const { isLargeScreen } = useWindowSize();
+  const sizeIcon = computed(() => (isLargeScreen.value ? '20px' : '16px'));
 </script>
 
 <template>
@@ -17,13 +22,13 @@
       <div class="informations-post">
         <div class="date">
           <div class="icon date">
-            <CalendarIcon width="16px" height="16px" />
+            <CalendarIcon :width="sizeIcon" :height="sizeIcon" />
           </div>
           {{ props.post.date }}
         </div>
         <div class="category">
           <div class="icon category">
-            <BookIcon width="16px" height="16px" />
+            <BookIcon :width="sizeIcon" :height="sizeIcon" />
           </div>
           {{ props.post.category }}
         </div>
@@ -104,6 +109,26 @@
       display: flex;
       align-items: center;
       gap: 1rem;
+    }
+  }
+
+  @include media('desktop') {
+    .container-post {
+      .informations-post {
+        font-size: $font-base-size;
+        div > .icon {
+          width: 32px;
+          height: 32px;
+        }
+      }
+
+      p {
+        font-size: $font-base-lg;
+      }
+
+      .informations-reading {
+        font-size: $font-base-size;
+      }
     }
   }
 </style>
