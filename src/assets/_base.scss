@@ -1,7 +1,10 @@
 @use 'variables' as *;
+@use 'mixins' as *;
 
 * {
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 html {
@@ -12,7 +15,11 @@ html {
 }
 
 #app {
-  max-width: 1200px;
+  max-width: 1280px;
   min-height: 100vh;
+  @include media('mobile') {
+    padding: 0;
+  }
+  padding: 0 10px;
   margin: 0 auto;
 }

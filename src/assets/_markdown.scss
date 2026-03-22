@@ -1,4 +1,5 @@
 @use 'variables' as *;
+@use 'mixins' as *;
 
 %code-inline {
   padding: 0.125rem 0.25rem;
@@ -97,6 +98,77 @@ div .content {
     }
     li::marker {
       color: $primary-color;
+    }
+  }
+}
+
+@include media('tablet') {
+  div .content {
+    h1 {
+      font-size: $font-base-xl;
+    }
+
+    h2 {
+      font-size: $font-base-lg;
+    }
+
+    h3 {
+      font-size: $font-base-size;
+    }
+
+    p {
+      font-size: $font-base-size;
+    }
+    
+    ul,
+    ol {
+      li {
+        font-size: $font-base-size;
+      }
+    }
+
+    th,
+    td {
+      font-size: $font-base-size;
+    }
+
+  }
+}
+
+@include media('desktop') {
+  div .content {
+    h1 {
+      font-size: $font-base-2xl;
+    }
+
+    p {
+      font-size: $font-base-lg;
+    }
+
+    h2 {
+      font-size: $font-base-xl;
+    }
+
+    h3 {
+      font-size: $font-base-lg;
+    }
+
+    pre {
+      code {
+        font-size: $font-base-size;
+      }
+    }
+
+    ul,
+    ol {
+      li {
+        font-size: $font-base-lg;
+      }
+    }
+
+    th,
+    td {
+      font-size: $font-base-lg;
     }
   }
 }
