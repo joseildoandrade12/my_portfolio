@@ -1,33 +1,38 @@
 <script setup lang="ts">
+  import { computed } from 'vue';
+  import { useWindowSize } from '@/composables/useWindowSize';
   import { RouterLink } from 'vue-router';
   import ArrowIcon from './icons/ArrowIcon.vue';
   import ShareIcon from './icons/ShareIcon.vue';
+
+  const { isLargeScreen } = useWindowSize();
+  const toggleIcons = computed(() => !isLargeScreen.value);
 </script>
 
 <template>
-  <ul >
+  <ul :class="{ active: !toggleIcons }">
     <li>
       <RouterLink to="/">
         <p>Home</p>
-        <ArrowIcon fill="#63B3FF" />
+        <ArrowIcon fill="#63B3FF" v-if="toggleIcons" />
       </RouterLink>
     </li>
     <li>
       <RouterLink to="/projects">
         <p>Projetos</p>
-        <ArrowIcon fill="#63B3FF" />
+        <ArrowIcon fill="#63B3FF" v-if="toggleIcons" />
       </RouterLink>
     </li>
     <li>
       <RouterLink to="/about">
         <p>Sobre</p>
-        <ArrowIcon fill="#63B3FF" />
+        <ArrowIcon fill="#63B3FF" v-if="toggleIcons" />
       </RouterLink>
     </li>
     <li>
       <a target="blank" href="https://github.com/joseildoandrade12">
         <p>GitHub</p>
-        <ShareIcon fill="#63B3FF" />
+        <ShareIcon fill="#63B3FF" v-if="toggleIcons" />
       </a>
     </li>
   </ul>
@@ -53,7 +58,7 @@
         display: flex;
         align-items: center;
         padding: 0.625rem;
-        font-size: 0.875rem;
+        font-size: $font-base-sm;
 
         p {
           color: $color-description;
@@ -80,6 +85,22 @@
       &:last-child {
         a svg {
           transform: rotate(0deg);
+        }
+      }
+    }
+  }
+
+  @include media('desktop') {
+    ul {
+      gap: 8px;
+      li > a {
+        text-align: center;
+        padding: 0.875rem;
+        font-size: $font-base-lg;
+        p {
+          width: 80px;
+          margin: 0;
+          text-align: center;
         }
       }
     }
