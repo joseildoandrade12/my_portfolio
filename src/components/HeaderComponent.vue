@@ -1,5 +1,6 @@
 <script setup lang="ts">
-  import { onMounted, ref, type Component } from 'vue';
+  import { computed, ref, type Component, watchEffect } from 'vue';
+  import { useWindowSize } from '@/composables/useWindowSize';
   import { RouterLink } from 'vue-router';
   import { useThemePage } from '@/composables/useThemePage';
   import HomeIcon from './icons/HomeIcon.vue';
@@ -14,9 +15,11 @@
     theme: 'dark' | 'light' | 'system';
   }
 
+  const { isLargeScreen } = useWindowSize();
   const { toggleTheme, theme } = useThemePage();
   const count = ref(0);
   const activeMenu = ref(false);
+  const toggleIconMenu = ref(true);
 
   const themes: ObjTheme[] = [
     { icon: Moon, theme: 'dark' },
@@ -36,21 +39,29 @@
       count.value = i;
     }
   }
+
+  watchEffect(() => {
+    activeMenu.value = isLargeScreen.value;
+    toggleIconMenu.value = !isLargeScreen.value;
+  });
+
+  const sizeIcon = computed(() => (isLargeScreen.value ? '24px' : '20px'));
+  const sizeHome = computed(() => (isLargeScreen.value ? '28px' : '24px'));
 </script>
 
 <template>
   <div class="container-header">
     <RouterLink to="/">
-      <HomeIcon class="home-icon" fill="#63B3FF" />
+      <HomeIcon class="home-icon" fill="#63B3FF" :width="sizeHome" :height="sizeHome" />
       <h1>JoseildoDev</h1>
     </RouterLink>
-    <MenuComponent class="itens-menu" v-if="activeMenu" />
+    <MenuComponent class="itens-menu" v-show="activeMenu" />
     <nav>
       <button @click="sumCount">
-        <component :is="themes[count]?.icon" width="20px" height="20px">
+        <component :is="themes[count]?.icon" :width="sizeIcon" :height="sizeIcon">
         </component>
       </button>
-      <button @click="activeMenu = !activeMenu">
+      <button v-if="toggleIconMenu" @click="activeMenu = !activeMenu">
         <MenuIcon width="20px" height="20px" />
       </button>
     </nav>
@@ -86,7 +97,7 @@
         padding-top: 4px;
         margin-left: 0.5rem;
         font-weight: bold;
-        font-size: 0.875rem;
+        font-size: $font-base-sm;
       }
     }
 
@@ -123,6 +134,16 @@
       to {
         opacity: 1;
         transform: translateY(0);
+      }
+    }
+  }
+
+  @include media('desktop') {
+    .container-header {
+      a > h1 {
+        padding-top: 2px;
+        font-size: $font-base-lg;
+        letter-spacing: 1.1px;
       }
     }
   }
