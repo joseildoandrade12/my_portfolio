@@ -1,17 +1,22 @@
 <script setup lang="ts">
-  import { onMounted } from 'vue';
+  import { computed, onMounted } from 'vue';
   import { useGithubProfile } from '@/composables/useGithubProfile';
+  import { useWindowSize } from '@/composables/useWindowSize';
   import InstagramIcon from './icons/InstagramIcon.vue';
   import EmailIcon from './icons/EmailIcon.vue';
   import LinkedinIcon from './icons/LinkedinIcon.vue';
   import GithubIcon from './icons/GithubIcon.vue';
 
+  const { isLargeScreen } = useWindowSize();
   const { profile, errorProfile, loadingProfile, fetchProfile } =
     useGithubProfile();
 
   onMounted(() => {
     fetchProfile('joseildoandrade12');
   });
+
+  const sizeIcon = computed(() => isLargeScreen.value ? '32px' : '28px');
+
 </script>
 <template>
   <div class="loading" v-if="loadingProfile"></div>
@@ -26,16 +31,16 @@
     </p>
     <div class="container-icons-profile">
       <a href="https://www.instagram.com/juniorandrade12_/" target="_blank">
-        <InstagramIcon width="28" height="28" />
+        <InstagramIcon :width="sizeIcon" :height="sizeIcon" />
       </a>
-      <a href="mailto:joseildoandrade1405@gmail.com" target="_blank">
-        <EmailIcon width="28" height="28" />
+      <a href="mailto:joseildoandrade1325@gmail.com" target="_blank">
+        <EmailIcon :width="sizeIcon" :height="sizeIcon" />
       </a>
       <a href="https://www.linkedin.com/in/joseildo-andrade/" target="_blank">
-        <LinkedinIcon width="28" height="28" />
+        <LinkedinIcon :width="sizeIcon" :height="sizeIcon" />
       </a>
       <a :href="profile?.html_url" target="_blank">
-        <GithubIcon width="28" height="28" />
+        <GithubIcon :width="sizeIcon" :height="sizeIcon" />
       </a>
     </div>
   </div>
@@ -66,6 +71,7 @@
 
   .container-profile {
     display: flex;
+    height: fit-content;
     flex-direction: column;
     align-items: center;
     padding: 1.25rem;
@@ -101,6 +107,7 @@
     }
 
     p {
+      max-width: 600px;
       color: $color-description;
       font-size: $font-base-sm;
       text-align: center;
@@ -122,6 +129,38 @@
 
         &:hover {
           background-color: $background-icons-hover;
+        }
+      }
+    }
+  }
+
+  @include media('desktop') {
+    .container-profile {
+      .image-profile {
+        width: 256px;
+        height: 256px;
+      }
+
+      h2 {
+        font-size: $font-base-lg;
+      }
+
+      .spacing {
+        width: 24px;
+      }
+
+      p {
+        width: 250px;
+        text-align: justify;
+        font-size: $font-base-lg;
+        margin-bottom: 24px;
+      }
+
+      .container-icons-profile {
+        gap: 0.625rem;
+        a {
+          width: 42px;
+          height: 42px;
         }
       }
     }
