@@ -1,0 +1,21 @@
+@use 'variables' as *;
+
+@mixin media($breakpoint) {
+  @if $breakpoint == 'mobile' {
+    @media (max-width: 480px) {
+      @content;
+    }
+  } @else if $breakpoint == 'tablet' {
+    @media (max-width: 860px) {
+      @content;
+    }
+  } @else if $breakpoint == 'desktop' {
+    @media (min-width: 860px) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  }
+}
