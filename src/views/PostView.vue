@@ -1,6 +1,7 @@
 <script setup lang="ts">
-  import { computed } from 'vue';
+  import { computed, onMounted } from 'vue';
   import { useDataPost } from '@/composables/useDataPost';
+  import { useWindowSize } from '@/composables/useWindowSize';
   import type { DataPost } from '@/types/types';
   import { Marked } from 'marked';
   import { markedHighlight } from 'marked-highlight';
@@ -24,6 +25,7 @@
   );
 
   const { dataPost } = useDataPost();
+  const { isLargeScreen } = useWindowSize();
   const props = defineProps(['id']);
   const nxPost = computed(() => !(props.id < dataPost.value.length));
   const pvPost = computed(() => !(props.id > 1));
@@ -38,6 +40,8 @@
       : '';
   });
 
+  const sizeIcon = computed(() => (isLargeScreen.value ? '20px' : '16px'));
+
   function nextPost() {
     if (props.id == dataPost.value.length) {
       return;
@@ -51,6 +55,12 @@
     }
     router.push(`/projects/post/${+props.id - 1}`);
   }
+
+  onMounted(() => {
+    if (!dataPost.value[props.id - 1]) {
+      router.push('/404');
+    }
+  });
 </script>
 
 <template>
@@ -59,13 +69,13 @@
     <div class="container-tags">
       <div class="container-icons">
         <div class="icon calendar">
-          <CalendarIcon height="16px" width="16px" />
+          <CalendarIcon :height="sizeIcon" :width="sizeIcon" />
         </div>
         <p>{{ contentPost?.date }}</p>
       </div>
       <div class="container-icons">
         <div class="icon calendar">
-          <HashtagIcon height="16px" width="16px" />
+          <HashtagIcon :height="sizeIcon" :width="sizeIcon" />
         </div>
         <p>{{ contentPost?.category }}</p>
       </div>
@@ -182,6 +192,33 @@
 
     .next {
       text-align: end;
+    }
+  }
+
+  @include media('desktop') {
+    .container-content {
+      h1 {
+        font-size: $font-base-4xl;
+      }
+
+      .container-tags > .container-icons {
+        p {
+          font-size: $font-base-size;
+        }
+        .icon {
+          width: 32px;
+          height: 32px;
+        }
+      }
+    }
+  }
+
+  @include media('tablet') {
+    .container-buttons-footer {
+      display: block;
+      button {
+        margin-bottom: 16px;
+      }
     }
   }
 </style>
