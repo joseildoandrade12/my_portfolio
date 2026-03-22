@@ -42,9 +42,18 @@
         </div>
         <p>{{ repository?.description }}</p>
         <div class="footer-card">
-          <div class="stars" > <StarIcon width="24px" height="24px"/> {{ repository?.stargazers_count }}</div>
-          <div class="forks"> <ForkIcon width="20px" height="24px"/> {{ repository?.forks_count }}</div>
-          <div class="license"> <BalanceIcon width="24px" height="24px"/> {{ repository?.license?.name }}</div>
+          <div class="stars">
+            <StarIcon width="24px" height="24px" />
+            {{ repository?.stargazers_count }}
+          </div>
+          <div class="forks">
+            <ForkIcon width="20px" height="24px" />
+            {{ repository?.forks_count }}
+          </div>
+          <div class="license">
+            <BalanceIcon width="24px" height="24px" />
+            {{ repository?.license?.name }}
+          </div>
         </div>
       </div>
     </a>
@@ -138,6 +147,9 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        @include media('desktop') {
+          white-space: wrap;
+        }
       }
 
       .footer-card {
@@ -150,6 +162,35 @@
         color: $color-description;
         display: flex;
         gap: 1rem;
+      }
+    }
+  }
+
+  @include media('desktop') {
+    .container-sobre {
+      p {
+        font-size: $font-base-lg;
+      }
+
+      .card-informations-github {
+        .header-card {
+          .name-profile {
+            font-size: $font-base-xl;
+          }
+
+          p {
+            font-size: $font-base-xl;
+          }
+
+          .picture-profile {
+            width: 32px;
+            height: 32px;
+          }
+        }
+
+        p {
+          font-size: $font-base-lg;
+        }
       }
     }
   }
