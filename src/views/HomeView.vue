@@ -119,4 +119,10 @@
       }
     }
   }
+
+  @include media('desktop') {
+    .container-home {
+      padding: 28px;
+    }
+  }
 </style>
