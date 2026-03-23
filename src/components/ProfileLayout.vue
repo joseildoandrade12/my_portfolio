@@ -15,8 +15,7 @@
     fetchProfile('joseildoandrade12');
   });
 
-  const sizeIcon = computed(() => isLargeScreen.value ? '32px' : '28px');
-
+  const sizeIcon = computed(() => (isLargeScreen.value ? '32px' : '28px'));
 </script>
 <template>
   <div class="loading" v-if="loadingProfile"></div>
@@ -150,7 +149,10 @@
       }
 
       p {
-        width: 250px;
+        width: 248px;
+        word-break: break-all;
+        line-height: 1.3;
+        letter-spacing: 1px;
         text-align: justify;
         font-size: $font-base-lg;
         margin-bottom: 24px;
